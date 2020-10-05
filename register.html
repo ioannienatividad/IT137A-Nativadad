@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <form class="form-register">
+            <h2 class="form-register-heading text-center"> Registration Form</h2>
+            <h3>Create account</h3>  
+        <form action="/action_page.php">
+            <input type="text" class="form-control" name="username" placeholder="User Name" id="userName" required="" autofocus="" />
+            <input type="text" class="form-control" name="firstname" placeholder="First Name" id="firstName" required="" autofocus="" />
+            <input type="text" class="form-control" name="middlename" placeholder="Middle Name" id="middleName" required="" autofocus="" />
+            <input type="text" class="form-control" name="lastname" placeholder="Last Name" id="lastName" required="" autofocus="" />
+            <input type="password" class="form-control" name="password" placeholder="Password" id="Password" required="" />                
+        <label class="checkbox">
+            <input type="checkbox" class="form-check-input" name="" id="checkpass" value="checkedValue" onclick="myFunction()"> Show password
+        </label> 
+            <input type="password" class="form-control" name="confirmpassword" placeholder="Confirm Password" id="confirmPassword" required="" />
+        <label class="checkbox">
+            <input type="checkbox" class="form-check-input" name="" id="checkPass" value="checkedValue" onclick="myFunction1()"> Show password
+        </label>                       
+        <label class="checkbox">
+            <input type="checkbox" class="form-check-input" name="" id="checkaccept" value="checkedValue"> I have accept the <a href="">Terms of use</a> & <a href="">Privacy Policy</a>.
+        </label>
+            <button type="submit" class="btn btn-primary btn-block" id="registerbutton">Submit</button>
+        <label id="already">Already have an <a href="index.html">account?</a></label>      
+        </form>
+        </form>
+    </div>
+</body>
+
+<script>
+$("#registerbutton").click(function(){
+
+      let userName = $("#userName").val();
+      let firstName = $("#firstName").val();
+      let middleName = $("#middleName").val();
+      let lastName = $("#lastName").val();
+      let Password = $("#Password").val();
+      let confirmPassword = $("#confirmPassword").val();
+      let checking = $('#checkaccept').is(":checked");
+      if(!(Password).match(confirmPassword)){
+          alert("Password mismatched!");
+          return false;
+          }else if((Password.length) < 8){
+          alert("Password should atleast 8 characters in length!");
+          return false;
+          }else if((firstName.length) === 0||(middleName.length) === 0||(lastName.length) === 0||(Password.length) === 0||(confirmPassword.length) === 0)
+          {
+            alert("Please fill up the form!");
+            return false;
+          }else if(!(checking))
+          {
+            alert("Please read first the Terms of use and Privacy policy!");
+            return false;
+          }
+          else{
+          alert("You are now successfully registered!");
+          return true;
+          }
+});
+function myFunction() {
+  var x = document.getElementById("Password");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+function myFunction1() {
+  var x = document.getElementById("confirmPassword");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+</script>
+</html>
